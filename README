@@ -1,0 +1,32 @@
+README for v4.0 of ddisk.pro, which is an IDL script that calculates dust abundances
+over time for a debris-disk that is produced by a planetesimal disk that is grinding
+away due to collisional erosion. For further details, see paper by J. Hahn, 2010, 
+Diagnosing Circumstellar Debris Disks, Astrophysical Journal, v719, p1699.
+
+To execute, first edit the model's input parameters in file inputs.pro.
+Then start IDL, and enter @ddisk at the prompt to execute the model.
+Then enter @figs to run the script that will analyze the output and generate some figures.
+
+The model's principal outputs are the 1D arrays a, e, beta, where a[i]=semimajor axis
+of the dust in orbit i, e[i]=eccentricity, and beta[i]=dust size parameter. The 1d array
+tau is the dimensionless time axis (called t* in the paper), such that the system time
+in years is tau*T0_yr. The 2D array N contains the abundance of dust in the various
+orbits at various times, such that N[i,j] is the number of dust grains in orbit a[i],e[i]
+at time tau[j]. Of course, this code generates lots of other quantities as well,
+so please read the comments in inputs.pro, ddisk.pro, and figs.pro to determine their
+meaning.
+
+Execution times depend sensitively on the input parameters. For instance, a run with
+N_sizes=200, N_longitudes=100, and N_rings=1 executes in about 3 minutes on my desktop PC,
+while a similar simulation with N_rings=5 requires 70 minutes.
+
+If you don't have an IDL license, you should still be able to run this software. But I would
+first have prepare my code so that it can be used with IDL's virtual machine, which is
+a free download. Just let me know if there is any interest, and I will see what I can do.
+
+Feel free to email me any suggestions or bug reports.
+
+Joseph M. Hahn
+Space Science Institute
+jhahn@spacescience.org
+April 16, 2013
